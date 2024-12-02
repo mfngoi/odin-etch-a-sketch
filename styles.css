@@ -1,0 +1,13 @@
+.canvas {
+    display: flex;
+    flex-wrap: wrap;
+    width: 700px;
+    height: 700px;
+    border: 2px solid red;
+}
+
+.dot{
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
