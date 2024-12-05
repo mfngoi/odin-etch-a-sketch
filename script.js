@@ -18,12 +18,16 @@ for (let row = 0; row < ROW_LENGTH; row++) {
         dot.classList.add("dot");
         dot.style["width"] = dotSize + "px";
         dot.style["height"] = dotSize + "px";
+        dot.style["opacity"] = 0;
+
+        let rValue = Math.floor(Math.random() * 256);
+        let gValue = Math.floor(Math.random() * 256);
+        let bValue = Math.floor(Math.random() * 256);
+        dot.style["background-color"] = `rgb(${rValue}, ${gValue}, ${bValue})`;
 
         dot.addEventListener("mouseover", (event) => {
-            let rValue = Math.floor(Math.random() * 256);
-            let gValue = Math.floor(Math.random() * 256);
-            let bValue = Math.floor(Math.random() * 256);
-            dot.style["background-color"] = `rgb(${rValue}, ${gValue}, ${bValue})`;
+            let dotStyle = window.getComputedStyle(event.target);
+            dot.style["opacity"] = parseFloat(dotStyle["opacity"]) + 0.10;
         });
 
         canvas.appendChild(dot);
@@ -47,12 +51,16 @@ button.addEventListener("click", () => {
             dot.classList.add("dot");
             dot.style["width"] = dotSize + "px";
             dot.style["height"] = dotSize + "px";
+            dot.style["opacity"] = 0;
 
-            dot.addEventListener("mouseover", () => {
-                let rValue = Math.floor(Math.random() * 256);
-                let gValue = Math.floor(Math.random() * 256);
-                let bValue = Math.floor(Math.random() * 256);
-                dot.style["background-color"] = `rgb(${rValue}, ${gValue}, ${bValue})`;
+            let rValue = Math.floor(Math.random() * 256);
+            let gValue = Math.floor(Math.random() * 256);
+            let bValue = Math.floor(Math.random() * 256);
+            dot.style["background-color"] = `rgb(${rValue}, ${gValue}, ${bValue})`;
+
+            dot.addEventListener("mouseover", (event) => {
+                let dotStyle = window.getComputedStyle(event.target);
+                dot.style["opacity"] = parseFloat(dotStyle["opacity"]) + 0.10;
             });
 
             canvas.appendChild(dot);
