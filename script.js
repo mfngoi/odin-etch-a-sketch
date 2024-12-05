@@ -7,6 +7,7 @@ const COLUMN_LENGTH = 16;
 const canvas = document.querySelector(".canvas");
 const canvasStyle = window.getComputedStyle(canvas);
 const button = document.querySelector("button");
+const toggleColors = document.querySelector("#randomColors");
 
 let canvasSize = parseFloat(canvasStyle.width);
 let dotSize = canvasSize / ROW_LENGTH;
@@ -19,11 +20,7 @@ for (let row = 0; row < ROW_LENGTH; row++) {
         dot.style["width"] = dotSize + "px";
         dot.style["height"] = dotSize + "px";
         dot.style["opacity"] = 0;
-
-        let rValue = Math.floor(Math.random() * 256);
-        let gValue = Math.floor(Math.random() * 256);
-        let bValue = Math.floor(Math.random() * 256);
-        dot.style["background-color"] = `rgb(${rValue}, ${gValue}, ${bValue})`;
+        dot.style["background-color"] = "red";
 
         dot.addEventListener("mouseover", (event) => {
             let dotStyle = window.getComputedStyle(event.target);
@@ -53,10 +50,14 @@ button.addEventListener("click", () => {
             dot.style["height"] = dotSize + "px";
             dot.style["opacity"] = 0;
 
-            let rValue = Math.floor(Math.random() * 256);
-            let gValue = Math.floor(Math.random() * 256);
-            let bValue = Math.floor(Math.random() * 256);
-            dot.style["background-color"] = `rgb(${rValue}, ${gValue}, ${bValue})`;
+            if (toggleColors.checked) {
+                let rValue = Math.floor(Math.random() * 256);
+                let gValue = Math.floor(Math.random() * 256);
+                let bValue = Math.floor(Math.random() * 256);
+                dot.style["background-color"] = `rgb(${rValue}, ${gValue}, ${bValue})`;
+            } else {
+                dot.style["background-color"] = "red";
+            }
 
             dot.addEventListener("mouseover", (event) => {
                 let dotStyle = window.getComputedStyle(event.target);
